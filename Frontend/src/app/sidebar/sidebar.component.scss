@@ -1,0 +1,23 @@
+.container-fluid {
+    padding-right: 60px;
+}
+
+.menu{
+    font-size: 25px;
+    padding-bottom: 30px;
+    padding-right: 50px;
+    box-shadow: 0 3px black;
+}
+
+ul {
+    li{
+        text-transform: uppercase;
+        transition: box-shadow .4s, color .3s;
+    }
+    li:hover,
+    li:focus,
+    li:active {
+        color: orangered;
+        box-shadow:0 1px black;
+    }
+}

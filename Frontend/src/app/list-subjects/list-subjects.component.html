@@ -1,0 +1,43 @@
+<div class="table-agile-info">
+    <div class="panel panel-default">
+        <div class="panel-heading item-center text-center">
+            <h2>Danh sách môn học</h2>
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table table-striped b-t b-light">
+                <thead>
+                    <tr >
+                        <th>Tên môn</th>
+                        <th>Mô tả</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let subject of subjects">
+                        <td>{{subject.name}}</td>
+                        <td>{{subject.des}}</td>
+                        <td>
+                            <i [routerLink]="'/point'" class="fas fa-eye custom-icon"></i> <!-- Icon xem chi tiết -->
+                            <i [routerLink]="'/maxCDR'" class="fas fa-edit custom-icon"></i> <!-- Icon sửa -->
+                            <i (click)="delete(subject.id)" class="fas fa-trash-alt custom-icon"></i> <!-- Icon xóa -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+            <footer class="panel-footer">
+                <div class="row">
+
+                    <div class="col-sm-7 text-right text-center-xs">
+                        <ul class="pagination pagination-sm m-t-none m-b-none">
+
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>

@@ -1,0 +1,26 @@
+<div class="form-inline">
+  <div class="form-group mb-2 d-flex">
+    <h3 for="subjectSelect" class="mr-2">Môn:</h3>
+    <select class="form-control" id="subjectSelect" [ngModel]="selectedSubject" (ngModelChange)="selectedSubject = $event">
+      <option *ngFor="let subject of subjects" [value]="subject.id">{{ subject.name }}</option>
+    </select>
+  </div>
+</div>
+
+<div class="container">
+  Nhập số phần: <input type="text" [(ngModel)]="numSections">
+  <button class="btn btn-primary" style="margin-left: 10px;" (click)="updateSections()">Xác nhận</button>
+</div>
+
+<div class="container">
+  <h2>Nhập mức điểm đánh giá</h2>
+  <div class="form-group" *ngFor="let section of formData.sections; let i = index">
+    <label for="name{{i+1}}">{{section.name}}:</label>
+    <input type="text" class="form-control" [(ngModel)]="section.maxScore" name="name{{i+1}}" required>
+  </div>
+  <button routerLink="'/point'" class="btn btn-primary" (click)="onSubmit()" style="margin-top: 10px;">Xác nhận</button>
+</div>
+
+<div *ngIf="successMessage" class="alert alert-success mt-3">
+  {{ successMessage }}
+</div>

@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-lg-12">
+      <section class="panel">
+        <header class="panel-heading">
+          <h2>Thêm môn học</h2>
+        </header>
+  
+        <div class="panel-body">
+          <div class="position-center">
+            <form (ngSubmit)="onSubmit()" [formGroup]="addSubjectForm">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Tên môn học</label>
+                <input type="text" class="form-control" formControlName="name" required>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Mô tả môn học</label>
+                <textarea style="resize: none" rows="8" class="form-control" formControlName="des" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-info mt-2">Thêm môn học</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
+  </div>
+  

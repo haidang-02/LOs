@@ -1,0 +1,14 @@
+.table tbody tr td {
+    width: 33.33%; /* Chiều rộng ô cột là 50% */
+    vertical-align: top; /* Căn lề đỉnh của nội dung */
+}
+
+.table th {
+    width: 33.33%;
+    text-align: left; /* Căn giữa nội dung của ô đầu tiên (Tên môn học) */
+}
+
+.custom-icon {
+    font-size: 20px; /* Adjust the icon size as needed */
+    margin-right: 20px; /* Adjust the right margin for spacing */
+}

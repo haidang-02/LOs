@@ -1,0 +1,103 @@
+
+<div class="form-inline">
+    <div class="form-group mb-2 d-flex">
+      <h3 for="subjectSelect" class="mr-2">Môn:</h3>
+      <select class="form-control" id="subjectSelect" [(ngModel)]="selectedSubject" (ngModelChange)="onSubjectChange()">
+        <option *ngFor="let subject of subjects" [value]="subject.id">{{ subject.name }}</option>
+      </select>
+    </div>
+  </div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card w-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h4 class="header-title">Bảng điểm</h4>
+                    <div class="mb-3">
+                        <!-- <button (click)="openModal()" class="btn btn-warning m-2">Report</button> -->
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane show active" id="basic-datatable-preview">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th rowspan="2" class="text-center small-text narrow-column">STT</th>
+                                    <th rowspan="2" class="text-center small-text">Họ và tên</th>
+                                    <th rowspan="2" class="text-center small-text">Mã SV</th>
+                                    <th colspan="2" class="text-center small-text">Questions (Scale10)</th>
+                                    <th rowspan="2" class="text-center small-text narrow-column2" [ngStyle]="{'background-color': 'rgba(255, 255, 0,0.7)'}">Grade (Scale10)</th>
+                                    <th colspan="2" class="text-center small-text">Điểm CĐR (Scale10)</th>
+                                    <th colspan="2" class="text-center small-text">Mức Đạt CĐR</th>
+                                </tr>
+                                <tr>
+                                    <td class="text-center small-text" data-type="h10"><small>Phần 1 - CĐR 1.2</small>
+                                    </td>
+                                    <td class="text-center small-text" data-type="h4"><small>Phần 2 - CĐR 2.1</small>
+                                    </td>
+                                    <td class="text-center small-text"><small>CĐR 1.2</small></td>
+                                    <td class="text-center small-text" data-type="h10"><small>CĐR 2.1</small>
+                                    </td>
+                                    <td class="text-center small-text" data-type="h4"><small>CĐR 1.2</small></td>
+                                    <td class="text-center small-text"><small>CĐR 2.1</small></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let grade of grades; let i = index">
+                                    <td class="text-center">{{ i + 1 }}</td>
+                                    <td class="text-center">{{ grade.student.name }}</td>
+                                    <td class="text-center">{{ grade.student.studentCode }}</td>
+                                    <td class=" text-center">
+                                        {{grade.diemGiuaKiCDR1_2}}
+                                    </td>
+                                    <td class=" text-center justify-content-center">
+                                        {{grade.diemGiuaKiCDR2_1}}
+                                    </td>
+                                    <td class="text-center" [ngStyle]="{'background-color': 'rgba(255, 255, 0,0.7)'}">{{grade.diemGiuaKi}}</td>
+                                    <td class="text-center">{{grade.diemGiuaKiCDR1_2H10}}</td>
+                                    <td class="text-center">{{grade.diemGiuaKiCDR2_1H10}}</td>
+                                    <td class="text-center">{{grade.mucDatCDR1_2 == null ? '' : grade.diemGiuaKiCDR1_2H10 >= 4 ? 'Đạt' : 'Không đạt' }}</td>
+                                    <td class="text-center">{{grade.mucDatCDR2_1 == null ? '' : grade.diemGiuaKiCDR2_1H10 >= 4 ? 'Đạt' : 'Không đạt' }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div>
+                            <h6>Tổng sinh viên: {{ grades.length }}</h6>
+                            <h6>Mức Đạt CDR 1.2: {{ category1AchievedPercentage }}% Đạt, {{ (100 - category1AchievedPercentage) }}% Không Đạt</h6>
+                            <h6>Mức Đạt CDR 2.1: {{ category2AchievedPercentage }}% Đạt, {{ (100 - category2AchievedPercentage) }}% Không Đạt</h6>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="modal fixed" (click)="closeModal($event)" *ngIf="isModalOpen">
+        <div class="modal-container w-full">
+            <div class="modal-body">
+                <p>Tổng số SV: </p>
+                <p>Mức đạt: </p>
+              
+                <table class="table table-bordered">
+                  <tr>
+                    <th></th>
+                    <th>Label 1</th>
+                    <th>Label 2</th>
+                  </tr>
+                  <tr>
+                    <td>Category 1</td>
+                    <td>: </td>
+                    <td>: </td>
+                  </tr>
+                  <tr>
+                    <td>Category 2</td>
+                    <td>: </td>
+                    <td>: </td>
+                  </tr>
+                </table>
+              </div>
+        </div>
+    </div> -->
